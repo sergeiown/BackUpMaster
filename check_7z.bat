@@ -5,6 +5,13 @@ where 7z >nul 2>&1
 if errorlevel 1 (
     REM Checking for the presence of 7z at the specific path
     if exist "C:\Program Files\7-Zip" (
+        REM Check if script is running as administrator
+        whoami /groups | find "S-1-16-12288" > nul
+        if %errorlevel% neq 0 (
+            REM Elevate script to administrator privileges
+            powershell -Command "Start-Process '%0' -Verb RunAs"
+            exit /b
+        )
         REM Append the 7-Zip directory to the PATH environment variable
         setx PATH "%PATH%;C:\Program Files\7-Zip\" /M
         goto showversion

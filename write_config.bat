@@ -10,18 +10,18 @@ if not exist config.txt (
     set /a "compression_level=1"
     set "excluded_extensions="
 
-    cls & echo Path to the files to be compressed^:
+    cls & echo Path to the files you want to back up^:
     set "folderSelection="
-    for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('%culture%'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = 'Path to the files to be compressed:'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
+    for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('%culture%'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = 'Path to the files you want to back up:'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
     set "source_path=!folderSelection!"
-    cls & echo Path to the files to be compressed: !source_path!
+    cls & echo Path to the files you want to back up: !source_path!
     timeout /t 2 >nul
 
-    cls & echo Path for compression results^:
+    cls & echo Path to the backup results^:
     set "folderSelection="
-    for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('%culture%'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = 'Path for compression results:'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
+    for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('%culture%'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = 'Path to the backup results:'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
     set "destination_path=!folderSelection!"
-    cls & echo Path for compression results: !destination_path!
+    cls & echo Path to the backup results: !destination_path!
     timeout /t 2 >nul
 
     cls & choice /c 123456789 /n /m "Enter the compression level (1-9, where 9 - the best, but the slowest): "
