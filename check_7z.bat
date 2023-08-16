@@ -31,4 +31,4 @@ if errorlevel 1 (
 REM Getting 7z version
 :showversion
 7z | findstr /i "7-Zip"
-timeout /t 1 >nul
+timeout /t 1 >nul & cls

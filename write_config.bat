@@ -28,7 +28,8 @@ if not exist config.txt (
     set "compression_level=%errorlevel%"
     timeout /t 2 >nul
 
-    cls & echo Enter the file extensions to be excluded during compression ^(separated by space, e.g.^: txt mp3 log^)^: & set /p excluded_extensions=
+    cls & echo Enter the file extensions to be excluded during compression ^(separated by space, e.g.^: txt mp3 log^)^: & echo.
+    set /p excluded_extensions=
     timeout /t 2 >nul
 
     (
@@ -49,12 +50,12 @@ if not exist config.txt (
     )
 
     endlocal
-    set "exitScript=1"
-    exit /b
 ) else ( 
     REM Suggestion to overwrite the configuration if a file is available  
+    if "%backup_call%"=="1" (exit /b)
     setlocal enabledelayedexpansion
-    cls & choice /c 12 /n /m "Create a new configuration? (1 - Yes, 2 - No): "
+    cls & color 07
+    choice /c 12 /n /m "Create a new configuration? (1 - Yes, 2 - No): "
     if "!errorlevel!"=="1" (
         endlocal
         goto :rewrite

@@ -20,17 +20,24 @@ for /f "tokens=1-2 delims=: " %%a in ('time /t') do (
 )
 
 REM Creating the backup file name
-set "backup_filename=backup_%year%%month%%day%_%hour%%minute%.zip"
+set "backup_filename=backup_%year%%month%%day%_%hour%.%minute%.zip"
 
 REM Executing compression
-7z a -tzip -mx=%compression_level% -xr!%excluded_extensions% "%destination_path%\%backup_filename%" "%source_path%\*.*"
 
-REM Verify and log the back up result
+cls & echo The back up process is in progress... & echo.
+7z a -tzip -mx=%compression_level% -xr!%excluded_extensions% "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
+
+findstr /c:"Everything is Ok" "%destination_path%\last_backup_log.txt"
 if %errorlevel% equ 0 (
-    echo Successful backup & echo %date% %time% Successful backup (%destination_path%\%backup_filename%) >> "%destination_path%\backup_log.txt"
+    color 0A
+    echo.
+    echo Successful backup & echo %day%%month%%year% %hour%:%minute% - Successful backup %destination_path%%backup_filename% >> "%destination_path%\main_backup_log.txt"
     timeout /t 2 >nul
 ) else (
-    echo Backup failed & echo %date% %time% Backup failed (%destination_path%\%backup_filename%) >> "%destination_path%\backup_log.txt"
-    echo %date% %time% Compression error: %errorlevel% >> "%destination_path%\backup_log.txt"
+    color 0C
+    echo Failed to create a backup. See %destination_path%last_backup_log.txt for details.
+    echo %day%%month%%year% %hour%:%minute% - Backup failed %destination_path%%backup_filename% >> "%destination_path%\main_backup_log.txt"
+    echo.
     timeout /t 2 >nul
+    pause
 )
