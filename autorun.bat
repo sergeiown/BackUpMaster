@@ -1,5 +1,5 @@
 @echo off
-set "targetPath=%~dp0BackUpMaster.bat"
+set "targetPath=%~dp0BackUpMaster.exe"
 set "iconPath=%~dp0BackUpMaster.ico"
 set "shortcutPath=%startupFolder%\BackUpMaster.lnk"
 set "startupFolder=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
