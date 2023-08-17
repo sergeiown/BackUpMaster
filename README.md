@@ -3,7 +3,7 @@ BackUpMaster is more than just a data preservation tool; it's a solution for aut
 
 ## Features and Capabilities:
 
-- **Executable Files for Ease:** The program comes with executable (.exe) files that simplify use by allowing you to easily run the program and all its components.
+- **Executable Files for Ease:** The program comes with [executable (.exe)](https://github.com/sergeiown/BackUpMaster/releases) files that simplify use by allowing you to easily run the program and all its components.
 - **Configuration Flexibility:** Convenient configuration via `config.ini` with a separate configurator for super convenient changes allows you to customize paths, compression level, excluded file extensions, number of saved copies and more..
 - **Automatic Startup:** The option for BackUpMaster to launch during system startup ensures continuous backup operations.
 - **Copy Management:** Automatic management of backup copies, allowing to retain only the necessary number of copies and remove outdated ones.
