@@ -28,8 +28,18 @@ if not exist config.txt (
     set "compression_level=%errorlevel%"
     timeout /t 2 >nul
 
-    cls & echo Enter the file extensions to be excluded during compression ^(separated by space, e.g.^: txt mp3 docx^)^: & echo.
-    set /p excluded_extensions=
+    cls & echo Enter the file extensions to be excluded during compression ^(separated by space, e.g.^: txt mp3 docx^):
+    echo.
+    set /p raw_extensions=
+    set "excluded_extensions="
+
+    for %%a in (%raw_extensions%) do (
+        if defined excluded_extensions (
+            set "excluded_extensions=!excluded_extensions! *.%%a"
+        ) else (
+            set "excluded_extensions=*.%%a"
+        )
+    )
     timeout /t 2 >nul
 
     cls & choice /c 12345 /n /m "Enter the number of backups to keep (1 - 5): "
