@@ -1,7 +1,7 @@
 @echo off
 
-REM Use the universal UTF-8 code
-chcp 65001 >nul
+REM Use a common color and universal UTF-8 code
+color 07 & chcp 65001 >nul
 
 REM Checking for the presence of 7z
 call check_7z.bat

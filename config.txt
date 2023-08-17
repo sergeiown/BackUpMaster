@@ -1,4 +1,5 @@
 source_path=C:\Users\serge\Documents\BPMN_Topics
 destination_path=D:\
 compression_level=9
-excluded_extensions=docx
+excluded_extensions=*.pdf
+number_of_copies=3
