@@ -1,27 +1,21 @@
 # [BackUpMaster](https://github.com/sergeiown/BackUpMaster/releases.)
 BackUpMaster is more than just a data preservation tool; it's a solution for automated and secure backup. It combines user-friendliness with powerful capabilities, helping safeguard critical information reliably.
 
-**Features and Capabilities:**
+## Features and Capabilities:
 
 - **Executable Files for Ease:** The program comes with executable (.exe) files that simplify usage, making it easy to run the program and its components.
-
 - **Configuration Flexibility:** Convenient configuration through `config.ini` allows adjusting paths, compression level, excluded file extensions, and the number of saved copies.
-
 - **Automatic Startup:** The option for BackUpMaster to launch during system startup ensures continuous backup operations.
-
 - **Copy Management:** Automatic management of backup copies, allowing to retain only the necessary number of copies and remove outdated ones.
-
 - **Exclusion of Exclusive Extensions:** The ability to exclude specific file extensions from the compression process provides greater control over the content of backup copies.
-
 - **Logging and Notifications:** Generation of log files for each copy creation process allows tracking results and receiving notifications about success or failure.
-
 - **Graphical Interface:** Through the command-line interface and graphical user interface, you can conveniently interact with the program.
-
 - **Individual Path Settings:** The capability to specify paths to backup and storage folders ensures tool flexibility.
-
 - **Configuration Editor:** A separate configuration editor file is provided, making it even more convenient to manage and fine-tune your backup settings.
 
-**Usage:**
+![image](https://github.com/sergeiown/BackUpMaster/assets/112722061/fcbd8242-f724-4b56-9f04-b767a5e243fe)
+
+## Usage:
 
 - The primary method of usage involves the executable files: `BackUpMaster.EXE` and `Config.EXE`, which are delivered as a self-extracting archive named [BackUpMaster_install.exe](https://github.com/sergeiown/BackUpMaster/releases.)
 - Upon initial extraction, both executable files will be accessible, and in any case, the configuration tool for initial settings will be launched.
@@ -31,7 +25,44 @@ BackUpMaster is more than just a data preservation tool; it's a solution for aut
 
 Your BackUpMaster program offers versatile methods of usage, combining executable files with batch files for seamless and efficient control of backup settings.
 
-**License:**
+## Module Logic and Interaction Overview:
+
+**BackUpMaster.bat:**
+This file orchestrates the general backup creation process.
+It begins with console configuration and UTF-8 encoding settings.
+The presence of the 7-Zip program is checked.
+The existence of the configuration file is verified.
+The `compression.bat` is invoked to perform the actual backup creation.
+
+**check_7z.bat:**
+This file checks for the presence of the 7-Zip program and configures its paths if it's installed.
+It utilizes the `where` command to check for the availability of 7z in the system.
+If 7z is not found, a specific path for 7-Zip is checked.
+If the script is launched without administrator privileges, it elevates itself to administrator level.
+The path to 7-Zip is added to the PATH environment variable.
+
+**write_config.bat:**
+This file creates or removes the BackUpMaster shortcut from autostart.
+It elevates the script's access rights to administrator level.
+It stores the current path to BackUpMaster and other settings.
+It creates or removes the BackUpMaster.lnk shortcut for autostart.
+
+**autorun.bat:**
+This file automates the backup creation process.
+It reads data from the configuration file.
+It generates a backup file name based on the date and time.
+It compresses files and creates a backup.
+After a successful copy creation, it checks the number of stored copies and, if necessary, deletes old copies.
+
+**compression.bat:**
+This file performs the actual file compression and backup creation.
+It reads data from the configuration file.
+It compresses files into an archive using the 7-Zip program.
+The result of copy creation is checked, and if successful, old copies are cleaned up according to the specified limit.
+
+This modular approach ensures seamless interaction and organized execution of the various components of the BackUpMaster program.
+
+## License:
 
 BackUpMaster is released under the MIT License.
 
