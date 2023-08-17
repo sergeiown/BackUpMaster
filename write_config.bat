@@ -83,14 +83,14 @@ if not exist config.ini (
     if not exist "%~dp0\BackUpMaster.lnk" (
         cls & choice /c YN /n /m "Do you want to turn on BackUpMaster autorun? (Y - Yes, N - No): "
         if "!errorlevel!"=="1" (
-            call autorun.bat
+            call .\autorun.bat
         ) else (
             exit /b
         )
     ) else (
         cls & choice /c YN /n /m "Do you want to disable BackUpMaster autorun? (Y - Yes, N - No): "
         if "!errorlevel!"=="1" (
-            call autorun.bat
+            call .\autorun.bat
         ) else (
             exit /b
         )
@@ -105,7 +105,7 @@ if not exist config.ini (
     timeout /t 1 >nul
 
     @REM Reading data from the configuration file
-    echo Copyright (c) 2023 Serhii I. Myshko
+    echo Copyright ^(c^) 2023 Serhii I. Myshko
     echo.
     echo.
     echo Current configuration^:
