@@ -45,7 +45,7 @@ The path to 7-Zip is added to the PATH environment variable.
 This file creates or removes the BackUpMaster shortcut from autostart.
 It elevates the script's access rights to administrator level.
 It stores the current path to BackUpMaster and other settings.
-It creates or removes the BackUpMaster.lnk shortcut for autostart.
+It provides all the interaction with the user regarding the program settings.
 
 **autorun.bat:**
 This file automates the backup creation process.
