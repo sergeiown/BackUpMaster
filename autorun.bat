@@ -23,12 +23,13 @@ if not exist "%BackUpMaster_location%" (
 cls & echo Path to the BackUpMaster.exe: %BackUpMaster_location%
 
 set "targetPath=%BackUpMaster_location%\BackUpMaster.exe"
+set "iconPath=%BackUpMaster_location%\BackUpMaster.ico"
 timeout /t 2 >nul
 
 if not exist "%~dp0\BackUpMaster.lnk" (
     @REM Create a shortcut
-    powershell.exe -Command "$WshShell = New-Object -ComObject WScript.Shell; $Shortcut = $WshShell.CreateShortcut('%startupFolder%\BackUpMaster.lnk'); $Shortcut.TargetPath = '%targetPath%'; $Shortcut.Save()"
-    powershell.exe -Command "$WshShell = New-Object -ComObject WScript.Shell; $Shortcut = $WshShell.CreateShortcut('%config_path%\BackUpMaster.lnk'); $Shortcut.TargetPath = '%targetPath%'; $Shortcut.Save()"
+    powershell.exe -Command "$WshShell = New-Object -ComObject WScript.Shell; $Shortcut = $WshShell.CreateShortcut('%startupFolder%\BackUpMaster.lnk'); $Shortcut.TargetPath = '%targetPath%'; $Shortcut.IconLocation = '%iconPath%,0'; $Shortcut.Save()"
+    powershell.exe -Command "$WshShell = New-Object -ComObject WScript.Shell; $Shortcut = $WshShell.CreateShortcut('%config_path%\BackUpMaster.lnk'); $Shortcut.TargetPath = '%targetPath%'; $Shortcut.IconLocation = '%iconPath%,0'; $Shortcut.Save()"
     exit /b
 ) else (
     @REM Delete existing shortcut
@@ -36,4 +37,3 @@ if not exist "%~dp0\BackUpMaster.lnk" (
     del "%config_path%\BackUpMaster.lnk"
     exit /b
 )
-
