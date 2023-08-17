@@ -8,7 +8,7 @@ BackUpMaster is more than just a data preservation tool; it's a solution for aut
 - **Automatic Startup:** The option for BackUpMaster to launch during system startup ensures continuous backup operations.
 - **Copy Management:** Automatic management of backup copies, allowing to retain only the necessary number of copies and remove outdated ones.
 - **Exclusion of Exclusive Extensions:** The ability to exclude specific file extensions from the compression process provides greater control over the content of backup copies.
-- **Logging and Notifications:** Generation of log files for each copy creation process allows tracking results and receiving notifications about success or failure.
+- **Logging and Notifications:** Generating log files for each copy process allows you to track the results and receive notifications of success or failure. Two types of log files are available: general and last operation logs, which allows you to fine-tune all aspects of the backup process.
 - **Graphical Interface:** Through the command-line interface and graphical user interface, you can conveniently interact with the program.
 - **Individual Path Settings:** The capability to specify paths to backup and storage folders ensures tool flexibility.
 - **Configuration Editor:** A separate configuration editor file is provided, making it even more convenient to manage and fine-tune your backup settings.
