@@ -25,14 +25,14 @@ if not exist config.ini (
     timeout /t 2 >nul
 
     cls & choice /c 123456789 /n /m "Enter the compression level (1-9, where 9 - the best, but the slowest): "
-    set "compression_level=%errorlevel%"
+    set "compression_level=!errorlevel!"
     timeout /t 2 >nul
 
     cls & echo Enter the file extensions to be excluded during compression ^(separated by space, e.g.^: txt mp3 docx^):
     echo.
     set /p raw_extensions=
     set "excluded_extensions="
-    for %%a in (%raw_extensions%) do (
+    for %%a in (!raw_extensions!) do (
         if defined excluded_extensions (
             set "excluded_extensions=!excluded_extensions! -x^!^"*.%%a^""
         ) else (
@@ -42,7 +42,7 @@ if not exist config.ini (
     timeout /t 2 >nul
 
     cls & choice /c 12345 /n /m "Enter the number of backups to keep (1 - 5): "
-    set "number_of_copies=%errorlevel%"
+    set "number_of_copies=!errorlevel!"
     timeout /t 2 >nul
 
     (
@@ -66,7 +66,6 @@ if not exist config.ini (
     endlocal
 ) else ( 
     REM Suggestion to overwrite the configuration if a file is available  
-    if "%backup_call%"=="1" (exit /b)
     setlocal enabledelayedexpansion
     cls & color 07
     choice /c 12 /n /m "Create a new configuration? (1 - Yes, 2 - No): "

@@ -8,9 +8,10 @@ call check_7z.bat
 if "%exitScript%"=="1" (exit /b)
 
 REM Checking for the existence of the configuration file
-set "backup_call=1"
+if not exist config.ini (
 call write_config.bat
 if "%exitScript%"=="1" (exit /b)
+)
 
 REM Performing a backup
 call compression.bat
