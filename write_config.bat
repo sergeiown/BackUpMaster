@@ -1,7 +1,7 @@
 @echo off
 
 if not exist config.ini (
-    REM Request data from the user
+    @REM Request data from the user
     :rewrite
     setlocal enabledelayedexpansion
     
@@ -99,12 +99,15 @@ if not exist config.ini (
     endlocal
 
 ) else ( 
-    REM Suggestion to overwrite the configuration if a file is available  
+    @REM Suggestion to overwrite the configuration if a file is available  
     setlocal enabledelayedexpansion
     cls & color 07
     timeout /t 1 >nul
 
-    REM Reading data from the configuration file
+    @REM Reading data from the configuration file
+    echo Copyright (c) 2023 Serhii I. Myshko
+    echo.
+    echo.
     echo Current configuration^:
     echo.
     for /f "usebackq tokens=1,2 delims==" %%i in ("config.ini") do (
@@ -117,6 +120,7 @@ if not exist config.ini (
     if exist "%~dp0\BackUpMaster.lnk" (
         echo BackUpMaster autorun : On
     ) else (echo BackUpMaster autorun : Off)
+    echo.
     echo.
 
     choice /c YN /n /m "Create a new configuration? (Y - Yes, N - No): "
