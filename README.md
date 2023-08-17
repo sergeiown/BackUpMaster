@@ -23,7 +23,7 @@ BackUpMaster is more than just a data preservation tool; it's a solution for aut
 - An alternative approach involves using batch files, although for convenience, it's simpler to utilize the executables, leaving the batch files for direct code manipulation when needed.
 - The usage is intuitive and requires no additional explanations.
 
-Your BackUpMaster program offers versatile methods of usage, combining executable files with batch files for seamless and efficient control of backup settings.
+BackUpMaster offers versatile methods of usage, combining executable files with batch files for seamless and efficient control of backup settings.
 
 ## Module Logic and Interaction Overview:
 
