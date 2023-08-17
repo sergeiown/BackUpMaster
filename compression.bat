@@ -1,7 +1,7 @@
 @echo off
 
 REM Reading data from the configuration file
-for /f "usebackq tokens=1,2 delims==" %%i in ("config.txt") do (
+for /f "usebackq tokens=1,2 delims==" %%i in ("config.ini") do (
     if "%%i"=="source_path" set source_path=%%j
     if "%%i"=="destination_path" set destination_path=%%j
     if "%%i"=="compression_level" set compression_level=%%j
@@ -31,11 +31,11 @@ if %errorlevel% equ 0 (
     for /F "Delims=" %%i in ('DIR /B/O:-N %destination_path%backup_????.??.??_??.??.??.7z') do (
         set /A "number_of_copies-=1"
         if !number_of_copies! LSS 0 (
-            echo Delete according to the rules %%i & echo Delete according to the rules %%i >> %destination_path%\last_backup_log.txt
+            echo Delete according to the rules: %%i & echo Delete according to the rules: %%i >> %destination_path%\last_backup_log.txt
             DEL "%destination_path%%%i"
             timeout /t 2 >nul
         ) else (
-            echo Store  according to the rules %%i & echo Store  according to the rules %%i >> %destination_path%\last_backup_log.txt
+            echo Store  according to the rules: %%i & echo Store  according to the rules: %%i >> %destination_path%\last_backup_log.txt
         )
     )
     endlocal

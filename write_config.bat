@@ -1,6 +1,6 @@
 @echo off
 
-if not exist config.txt (
+if not exist config.ini (
     REM Request data from the user
     :rewrite
     setlocal enabledelayedexpansion
@@ -51,15 +51,15 @@ if not exist config.txt (
         echo compression_level=!compression_level!
         echo excluded_extensions=!excluded_extensions!
         echo number_of_copies=!number_of_copies!
-    ) > config.txt
+    ) > config.ini
 
     if %errorlevel% neq 0 (
         color 0C
-        cls & echo An error occurred while writing to the config.txt file
+        cls & echo An error occurred while writing to the config.ini file
         timeout /t 2 >nul
     ) else (
         color 0A
-        cls & echo Configuration data is successfully written to the config.txt file
+        cls & echo Configuration data is successfully written to the config.ini file
         timeout /t 2 >nul
     )
 
