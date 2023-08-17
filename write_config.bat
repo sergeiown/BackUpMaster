@@ -41,7 +41,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     set "compression_level=!errorlevel!"
     timeout /t 2 >nul
 
-    cls & echo Enter the file extensions to be excluded during compression ^(separated by space, e.g.^: txt mp3 docx^):
+    cls & echo Enter the file extensions to be excluded ^(separated by space, e.g.^: mp3 docx^) or leave the line blank:
     echo.
     set /p raw_extensions=
     set "excluded_extensions="
@@ -110,7 +110,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     set "config_path=%USERPROFILE%\documents\BackUpMaster\"
 
     cls & color 07
-    timeout /t 1 >nul
+    timeout /t 2 >nul
 
     @REM Reading data from the configuration file
     echo Copyright ^(c^) 2023 Serhii I. Myshko

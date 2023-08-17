@@ -16,7 +16,12 @@ set "backup_filename=backup_%date_time%.7z"
 
 @REM Executing compression
 cls & echo The back up process is in progress... & echo.
-7z a -t7z -mx=%compression_level% -r -x!%excluded_extensions% "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
+
+if "%excluded_extensions%" == "" (
+    7z a -t7z -mx=%compression_level% -r "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
+) else (
+    7z a -t7z -mx=%compression_level% -r -x!%excluded_extensions% "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
+)
 echo. >> %destination_path%\last_backup_log.txt
 
 findstr /c:"Everything is Ok" "%destination_path%\last_backup_log.txt"
