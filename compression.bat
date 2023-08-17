@@ -1,7 +1,8 @@
 @echo off
 
 @REM Reading data from the configuration file
-for /f "usebackq tokens=1,2 delims==" %%i in ("config.ini") do (
+set "config_path=%USERPROFILE%\documents\BackUpMaster\"
+for /f "usebackq tokens=1,2 delims==" %%i in ("%config_path%\config.ini") do (
     if "%%i"=="source_path" set source_path=%%j
     if "%%i"=="destination_path" set destination_path=%%j
     if "%%i"=="compression_level" set compression_level=%%j

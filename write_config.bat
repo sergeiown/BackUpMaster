@@ -1,6 +1,6 @@
 @echo off
 
-if not exist config.ini (
+if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     @REM Request data from the user
     :rewrite
     setlocal enabledelayedexpansion
@@ -12,6 +12,7 @@ if not exist config.ini (
     set "excluded_extensions="
     set "number_of_copies="
     set "startupFolder=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+    set "config_path=%USERPROFILE%\documents\BackUpMaster\"
         
     :input_source_path
     cls & echo Path to the files you want to back up^:
@@ -57,13 +58,18 @@ if not exist config.ini (
     set "number_of_copies=!errorlevel!"
     timeout /t 2 >nul
 
+    REM Create the config_path if it doesn't exist
+    if not exist "!config_path!" (
+        mkdir "!config_path!"
+    )
+
     (
         echo source_path=!source_path!
         echo destination_path=!destination_path!
         echo compression_level=!compression_level!
         echo excluded_extensions=!excluded_extensions!
         echo number_of_copies=!number_of_copies!
-    ) > config.ini
+    ) > !config_path!\config.ini
 
     if %errorlevel% neq 0 (
         color 0C
@@ -80,7 +86,7 @@ if not exist config.ini (
     @REM Add and remove BackUpMaster autorun
     color 07
 
-    if not exist "%~dp0\BackUpMaster.lnk" (
+    if not exist "!config_path!\BackUpMaster.lnk" (
         cls & choice /c YN /n /m "Do you want to turn on BackUpMaster autorun? (Y - Yes, N - No): "
         if "!errorlevel!"=="1" (
             call .\autorun.bat
@@ -101,6 +107,8 @@ if not exist config.ini (
 ) else ( 
     @REM Suggestion to overwrite the configuration if a file is available  
     setlocal enabledelayedexpansion
+    set "config_path=%USERPROFILE%\documents\BackUpMaster\"
+
     cls & color 07
     timeout /t 1 >nul
 
@@ -110,14 +118,14 @@ if not exist config.ini (
     echo.
     echo Current configuration^:
     echo.
-    for /f "usebackq tokens=1,2 delims==" %%i in ("config.ini") do (
+    for /f "usebackq tokens=1,2 delims==" %%i in ("!config_path!\config.ini") do (
         if "%%i"=="source_path" echo Source path          : %%j
         if "%%i"=="destination_path" echo Destination path     : %%j
         if "%%i"=="compression_level" echo Compression level    : %%j
         if "%%i"=="excluded_extensions"  echo Excluded extensions  : %%j
         if "%%i"=="number_of_copies" echo Number of copies     : %%j
     )
-    if exist "%~dp0\BackUpMaster.lnk" (
+    if exist "!config_path!\BackUpMaster.lnk" (
         echo BackUpMaster autorun : On
     ) else (echo BackUpMaster autorun : Off)
     echo.
