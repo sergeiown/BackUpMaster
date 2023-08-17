@@ -11,11 +11,11 @@ for /f "usebackq tokens=1,2 delims==" %%i in ("config.txt") do (
 
 REM Creating the backup file name
 set "date_time=%DATE:~-4%.%DATE:~3,2%.%DATE:~0,2%_%TIME:~0,2%.%TIME:~3,2%.%TIME:~6,2%"
-set "backup_filename=backup_%date_time%.zip"
+set "backup_filename=backup_%date_time%.7z"
 
 REM Executing compression
 cls & echo The back up process is in progress... & echo.
-7z a -tzip -mx=%compression_level% -xr!%excluded_extensions% "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
+7z a -t7z -mx=%compression_level% -r -x!%excluded_extensions% "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
 echo. >> %destination_path%\last_backup_log.txt
 
 findstr /c:"Everything is Ok" "%destination_path%\last_backup_log.txt"
@@ -28,14 +28,14 @@ if %errorlevel% equ 0 (
 
     REM Delete older backup files if necessary
     setlocal enabledelayedexpansion
-    for /F "Delims=" %%i in ('DIR /B/O:-N %destination_path%backup_????.??.??_??.??.??.zip') do (
+    for /F "Delims=" %%i in ('DIR /B/O:-N %destination_path%backup_????.??.??_??.??.??.7z') do (
         set /A "number_of_copies-=1"
         if !number_of_copies! LSS 0 (
             echo Delete according to the rules %%i & echo Delete according to the rules %%i >> %destination_path%\last_backup_log.txt
             DEL "%destination_path%%%i"
             timeout /t 2 >nul
         ) else (
-            echo Store according to the rules  %%i & echo Store according to the rules  %%i >> %destination_path%\last_backup_log.txt
+            echo Store  according to the rules %%i & echo Store  according to the rules %%i >> %destination_path%\last_backup_log.txt
         )
     )
     endlocal

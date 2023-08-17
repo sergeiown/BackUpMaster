@@ -32,12 +32,11 @@ if not exist config.txt (
     echo.
     set /p raw_extensions=
     set "excluded_extensions="
-
     for %%a in (%raw_extensions%) do (
         if defined excluded_extensions (
-            set "excluded_extensions=!excluded_extensions! *.%%a"
+            set "excluded_extensions=!excluded_extensions! -x^!^"*.%%a^""
         ) else (
-            set "excluded_extensions=*.%%a"
+            set "excluded_extensions="*.%%a""
         )
     )
     timeout /t 2 >nul
