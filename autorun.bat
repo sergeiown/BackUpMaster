@@ -1,11 +1,11 @@
 @echo off
 
 @REM @REM Elevate the script to administrator privileges
-@REM whoami /groups | find "S-1-16-12288" > nul
-@REM if %errorlevel% neq 0 (
-@REM     powershell -Command "Start-Process '%0' -Verb RunAs"
-@REM     exit /b
-@REM )
+whoami /groups | find "S-1-16-12288" > nul
+if %errorlevel% neq 0 (
+    powershell -Command "Start-Process '%0' -Verb RunAs"
+    exit /b
+)
 
 set "culture=en-US"
 set "shortcutPath=%startupFolder%\BackUpMaster.lnk"
