@@ -3,12 +3,12 @@ BackUpMaster is more than just a data preservation tool; it's a solution for aut
 
 ## Features and Capabilities:
 
-- **Executable Files for Ease:** The program comes with executable (.exe) files that simplify usage, making it easy to run the program and its components.
-- **Configuration Flexibility:** Convenient configuration through `config.ini` allows adjusting paths, compression level, excluded file extensions, and the number of saved copies.
+- **Executable Files for Ease:** The program comes with [executable (.exe)](https://github.com/sergeiown/BackUpMaster/releases) files that simplify use by allowing you to easily run the program and all its components.
+- **Configuration Flexibility:** Convenient configuration via `config.ini` with a separate configurator for super convenient changes allows you to customize paths, compression level, excluded file extensions, number of saved copies and more..
 - **Automatic Startup:** The option for BackUpMaster to launch during system startup ensures continuous backup operations.
 - **Copy Management:** Automatic management of backup copies, allowing to retain only the necessary number of copies and remove outdated ones.
 - **Exclusion of Exclusive Extensions:** The ability to exclude specific file extensions from the compression process provides greater control over the content of backup copies.
-- **Logging and Notifications:** Generation of log files for each copy creation process allows tracking results and receiving notifications about success or failure.
+- **Logging and Notifications:** Generating log files for each copy process allows you to track the results and receive notifications of success or failure. Two types of log files are available: general and last operation logs, which allows you to fine-tune all aspects of the backup process.
 - **Graphical Interface:** Through the command-line interface and graphical user interface, you can conveniently interact with the program.
 - **Individual Path Settings:** The capability to specify paths to backup and storage folders ensures tool flexibility.
 - **Configuration Editor:** A separate configuration editor file is provided, making it even more convenient to manage and fine-tune your backup settings.
