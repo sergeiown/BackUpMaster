@@ -3,6 +3,7 @@
 @REM Reading data from the configuration file
 set "config_path=%USERPROFILE%\documents\BackUpMaster\"
 for /f "usebackq tokens=1,2 delims==" %%i in ("%config_path%\config.ini") do (
+    if "%%i"=="zpath" set "zpath=%%j"
     if "%%i"=="source_path" set source_path=%%j
     if "%%i"=="destination_path" set destination_path=%%j
     if "%%i"=="compression_level" set compression_level=%%j
@@ -18,9 +19,9 @@ set "backup_filename=backup_%date_time%.7z"
 cls & echo The back up process is in progress... & echo.
 
 if "%excluded_extensions%" == "" (
-    7z a -t7z -mx=%compression_level% -r "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
+    "%zpath%7z.exe" a -t7z -mx=%compression_level% -r "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
 ) else (
-    7z a -t7z -mx=%compression_level% -r -x!%excluded_extensions% "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
+    "%zpath%7z.exe" a -t7z -mx=%compression_level% -r -x!%excluded_extensions% "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
 )
 echo. >> %destination_path%\last_backup_log.txt
 

@@ -1,11 +1,12 @@
 @echo off
 
 if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
-    @REM Request data from the user
     :rewrite
     setlocal enabledelayedexpansion
     
     set "culture=en-US"
+    set "exitScript=0"
+    set "7zPath="
     set "source_path="
     set "destination_path="
     set /a "compression_level=1"
@@ -13,7 +14,28 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     set "number_of_copies="
     set "startupFolder=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
     set "config_path=%USERPROFILE%\documents\BackUpMaster\"
-        
+
+    REM Search for 7-Zip in Program Files and Program Files (x86)
+    for %%f in ("%ProgramFiles%\7-Zip\7z.exe" "%ProgramFiles(x86)%\7-Zip\7z.exe") do (
+        set "7zPath=%%~dpf"
+        goto found
+    )
+
+    :found
+    if "!7zPath!"=="" (
+        echo 7-Zip was not found.
+        echo.
+        echo Please download it from: https://www.7-zip.org/download.html
+        echo.
+        pause
+        set "exitScript=1"
+        exit /b
+    ) else (
+        "!7zPath!7z.exe" | findstr /i "7-Zip"
+        timeout /t 2 >nul & cls
+    )
+
+    @REM Request data from the user    
     :input_source_path
     cls & echo Path to the files you want to back up^:
     set "folderSelection="
@@ -64,6 +86,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     )
 
     (
+        echo zpath=!7zPath!
         echo source_path=!source_path!
         echo destination_path=!destination_path!
         echo compression_level=!compression_level!
@@ -119,6 +142,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     echo Current configuration^:
     echo.
     for /f "usebackq tokens=1,2 delims==" %%i in ("!config_path!\config.ini") do (
+        if "%%i"=="zpath" echo 7-zip path           : %%j
         if "%%i"=="source_path" echo Source path          : %%j
         if "%%i"=="destination_path" echo Destination path     : %%j
         if "%%i"=="compression_level" echo Compression level    : %%j
