@@ -1,4 +1,4 @@
-# [BackUpMaster](https://github.com/sergeiown/BackUpMaster/releases.)
+# [BackUpMaster](https://github.com/sergeiown/BackUpMaster/releases)
 
 BackUpMaster is more than just a data preservation tool; it's a solution for automated and secure backup. It combines user-friendliness with powerful capabilities, helping safeguard critical information reliably.
 
