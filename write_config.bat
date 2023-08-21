@@ -153,7 +153,14 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     timeout /t 2 >nul
 
     @REM Reading data from the configuration file
+    echo     ____             __      __  __         __  ___           __           
+    echo    / __ ^)____ ______/ /__   / / / /___     /  ^|/  /___ ______/ /____  _____
+    echo   / __  / __ `/ ___/ //_/  / / / / __ \   / /^|_/ / __ `/ ___/ __/ _ \/ ___/
+    echo  / /_/ / /_/ / /__/ ,^<    / /_/ / /_/ /  / /  / / /_/ ^(__  ^) /_/  __/ /    
+    echo /_____/\__,_/\___/_/^|_^|   \____/ .___/  /_/  /_/\__,_/____/\__/\___/_/     
+    echo                               /_/                                          
     echo Copyright ^(c^) 2023 Serhii I. Myshko
+    timeout /t 1 >nul
     echo.
     echo.
     echo Current configuration^:
