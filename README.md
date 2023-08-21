@@ -14,7 +14,7 @@ BackUpMaster is more than just a data preservation tool; it's a solution for aut
 -   **Individual Path Settings:** The capability to specify paths to backup and storage folders ensures tool flexibility.
 -   **Configuration Editor:** A separate configuration editor file is provided, making it even more convenient to manage and fine-tune your backup settings.
 
-![image](https://github.com/sergeiown/BackUpMaster/assets/112722061/fcbd8242-f724-4b56-9f04-b767a5e243fe)
+![image](https://github.com/sergeiown/BackUpMaster/assets/112722061/7039e5a8-8854-4b0c-9a1a-e9597c0088f9)
 
 ## Usage:
 
