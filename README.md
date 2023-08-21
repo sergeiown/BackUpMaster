@@ -38,21 +38,17 @@ The `compression.bat` is invoked to perform the actual backup creation.
 **write_config.bat:**
 This file checks for the presence of the 7-Zip program and configures paths to it if it is installed.
 If 7z is not found, a warning is issued and a download offer is made.
-If the script is run without administrator privileges, it elevates itself to administrator level.
-This file also creates or removes the BackUpMaster shortcut from autostart.
 It stores the current path to BackUpMaster and other settings.
 It provides all the interaction with the user regarding the program settings.
 
 **autorun.bat:**
-This file automates the backup creation process.
-It reads data from the configuration file.
-It generates a backup file name based on the date and time.
-It compresses files and creates a backup.
-After a successful copy creation, it checks the number of stored copies and, if necessary, deletes old copies.
+If the script is run without administrator privileges, it elevates itself to administrator level.
+This file also creates or removes the BackUpMaster shortcut from autostart.
 
 **compression.bat:**
 This file performs the actual file compression and backup creation.
 It reads data from the configuration file.
+It generates a backup file name based on the date and time.
 It compresses files into an archive using the 7-Zip program.
 The result of copy creation is checked, and if successful, old copies are cleaned up according to the specified limit.
 
