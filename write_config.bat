@@ -32,10 +32,25 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
         exit /b
     ) else (
         "!7zPath!7z.exe" | findstr /i "7-Zip"
-        timeout /t 2 >nul & cls
+        @REM timeout /t 2 >nul & cls
     )
 
-    @REM Request data from the user    
+    @REM Request data from the user:
+
+    @REM Path to BackUpMaster.exe
+    :input_BackUpMaster_location
+    cls & echo Path to the BackUpMaster.exe^:
+    set "folderSelection="
+    for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('%culture%'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = 'Path to the BackUpMaster.exe:'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
+    if not exist "!folderSelection!\BackUpMaster.exe" (
+        goto input_BackUpMaster_location
+    ) else (
+        set "BackUpMaster_location=!folderSelection!"
+        cls & echo Path to the BackUpMaster.exe: !BackUpMaster_location!
+        timeout /t 2 >nul
+    )
+    
+    @REM Path to the source files
     :input_source_path
     cls & echo Path to the files you want to back up^:
     set "folderSelection="
@@ -47,7 +62,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     cls & echo Path to the files you want to back up: !source_path!
     timeout /t 2 >nul
 
-
+    @REM Path to the destination files
     :input_destination_path
     cls & echo Path to the backup results^:
     set "folderSelection="
@@ -59,9 +74,10 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     cls & echo Path to the backup results: !destination_path!
     timeout /t 2 >nul
 
+    @REM Compression level
     cls & choice /c 123456789 /n /m "Enter the compression level (1-9, where 9 - the best, but the slowest): "
     set "compression_level=!errorlevel!"
-    timeout /t 2 >nul
+    timeout /t 1 >nul
 
     cls & echo Enter the file extensions to be excluded ^(separated by space, e.g.^: mp3 docx^) or leave the line blank:
     echo.
@@ -74,11 +90,12 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
             set "excluded_extensions="*.%%a""
         )
     )
-    timeout /t 2 >nul
+    timeout /t 1 >nul
 
+    @REM Number of backups
     cls & choice /c 12345 /n /m "Enter the number of backups to keep (1 - 5): "
     set "number_of_copies=!errorlevel!"
-    timeout /t 2 >nul
+    timeout /t 1 >nul
 
     REM Create the config_path if it doesn't exist
     if not exist "!config_path!" (
@@ -86,6 +103,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     )
 
     (
+        echo BackUpMaster_location=!BackUpMaster_location!
         echo zpath=!7zPath!
         echo source_path=!source_path!
         echo destination_path=!destination_path!
@@ -142,6 +160,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     echo Current configuration^:
     echo.
     for /f "usebackq tokens=1,2 delims==" %%i in ("!config_path!\config.ini") do (
+        if "%%i"=="BackUpMaster_location" echo BackUpMaster path    - %%j
         if "%%i"=="zpath" echo 7-zip path           - %%j
         if "%%i"=="source_path" echo Source path          - %%j
         if "%%i"=="destination_path" echo Destination path     - %%j
