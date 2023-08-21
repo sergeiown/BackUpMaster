@@ -130,14 +130,14 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     if not exist "!config_path!\BackUpMaster.lnk" (
         cls & choice /c YN /n /m "Do you want to turn on BackUpMaster autorun? (Y - Yes, N - No): "
         if "!errorlevel!"=="1" (
-            call .\autorun.bat
+            call %~dp0autorun.bat
         ) else (
             exit /b
         )
     ) else (
         cls & choice /c YN /n /m "Do you want to disable BackUpMaster autorun? (Y - Yes, N - No): "
         if "!errorlevel!"=="1" (
-            call .\autorun.bat
+            call %~dp0autorun.bat
         ) else (
             exit /b
         )
