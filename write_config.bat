@@ -12,8 +12,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     set /a "compression_level=1"
     set "excluded_extensions="
     set "number_of_copies="
-    set "startupFolder=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
-    set "config_path=%USERPROFILE%\documents\BackUpMaster\"
+    set "config_path=%USERPROFILE%\documents\BackUpMaster"
 
     REM Search for 7-Zip in Program Files and Program Files (x86)
     for %%f in ("%ProgramFiles%\7-Zip\7z.exe" "%ProgramFiles(x86)%\7-Zip\7z.exe") do (
@@ -148,7 +147,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
 ) else ( 
     @REM Suggestion to overwrite the configuration if a file is available  
     setlocal enabledelayedexpansion
-    set "config_path=%USERPROFILE%\documents\BackUpMaster\"
+    set "config_path=%USERPROFILE%\documents\BackUpMaster"
 
     cls & color 07
     timeout /t 2 >nul

@@ -3,7 +3,7 @@
 setlocal enabledelayedexpansion
 
 set "startupFolder=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
-set "config_path=%USERPROFILE%\documents\BackUpMaster\"
+set "config_path=%USERPROFILE%\documents\BackUpMaster"
 set "culture=en-US"
 
 if not exist "%config_path%\BackUpMaster.lnk" (

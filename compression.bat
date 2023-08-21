@@ -19,37 +19,39 @@ set "backup_filename=backup_%date_time%.7z"
 cls & echo The back up process is in progress... & echo.
 
 if "%excluded_extensions%" == "" (
-    "%zpath%7z.exe" a -t7z -mx=%compression_level% -r "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
+    "%zpath%7z.exe" a -t7z -mx=%compression_level% -r "%destination_path%\%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
 ) else (
-    "%zpath%7z.exe" a -t7z -mx=%compression_level% -r -x!%excluded_extensions% "%destination_path%%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
+    "%zpath%7z.exe" a -t7z -mx=%compression_level% -r -x!"%excluded_extensions%" "%destination_path%\%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
 )
-echo. >> %destination_path%\last_backup_log.txt
+echo. >> "%destination_path%\last_backup_log.txt"
 
 findstr /c:"Everything is Ok" "%destination_path%\last_backup_log.txt"
 if %errorlevel% equ 0 (
     color 0A
     echo.
-    echo Successful backup & echo %date_time% - Successful backup %destination_path%%backup_filename% >> "%destination_path%main_backup_log.txt"
+    echo Successful backup & echo %date_time% - Successful backup "%destination_path%\%backup_filename%" >> "%destination_path%\%main_backup_log.txt"
     echo.
     timeout /t 2 >nul
 
     @REM Delete older backup files if necessary
     setlocal enabledelayedexpansion
-    for /F "Delims=" %%i in ('DIR /B/O:-N %destination_path%backup_????.??.??_??.??.??.7z') do (
+    for /F "Delims=" %%i in ('DIR /B/O:-N %destination_path%\backup_????.??.??_??.??.??.7z') do (
         set /A "number_of_copies-=1"
         if !number_of_copies! LSS 0 (
+            echo. & echo. >> %destination_path%\last_backup_log.txt
             echo Delete according to the rules: %%i & echo Delete according to the rules: %%i >> %destination_path%\last_backup_log.txt
-            DEL "%destination_path%%%i"
+            DEL "%destination_path%\%%i"
             timeout /t 2 >nul
         ) else (
             echo Store  according to the rules: %%i & echo Store  according to the rules: %%i >> %destination_path%\last_backup_log.txt
+            timeout /t 1 >nul
         )
     )
     endlocal
 ) else (
     color 0C
-    echo Failed to create a backup. See %destination_path%last_backup_log.txt for details.
-    echo %date_time% - Backup failed     %destination_path%%backup_filename% >> "%destination_path%main_backup_log.txt"
+    echo Failed to create a backup. See %destination_path%\last_backup_log.txt for details.
+    echo %date_time% - Backup failed     %destination_path%\%backup_filename% >> "%destination_path%\main_backup_log.txt"
     echo.
     timeout /t 2 >nul
     pause
