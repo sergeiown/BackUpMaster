@@ -142,16 +142,16 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     echo Current configuration^:
     echo.
     for /f "usebackq tokens=1,2 delims==" %%i in ("!config_path!\config.ini") do (
-        if "%%i"=="zpath" echo 7-zip path           : %%j
-        if "%%i"=="source_path" echo Source path          : %%j
-        if "%%i"=="destination_path" echo Destination path     : %%j
-        if "%%i"=="compression_level" echo Compression level    : %%j
-        if "%%i"=="excluded_extensions"  echo Excluded extensions  : %%j
-        if "%%i"=="number_of_copies" echo Number of copies     : %%j
+        if "%%i"=="zpath" echo 7-zip path           - %%j
+        if "%%i"=="source_path" echo Source path          - %%j
+        if "%%i"=="destination_path" echo Destination path     - %%j
+        if "%%i"=="compression_level" echo Compression level    - %%j
+        if "%%i"=="excluded_extensions"  echo Excluded extensions  - %%j
+        if "%%i"=="number_of_copies" echo Number of copies     - %%j
     )
     if exist "!config_path!\BackUpMaster.lnk" (
-        echo BackUpMaster autorun : On
-    ) else (echo BackUpMaster autorun : Off)
+        echo BackUpMaster autorun - On
+    ) else (echo BackUpMaster autorun - Off)
     echo.
     echo.
 
