@@ -16,7 +16,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     set "number_of_copies="
     set "config_path=%USERPROFILE%\documents\BackUpMaster"
 
-    REM Search for 7-Zip in Program Files and Program Files (x86)
+    REM *** Search for 7-Zip in Program Files and Program Files (x86) ***
     for %%f in ("%ProgramFiles%\7-Zip\7z.exe" "%ProgramFiles(x86)%\7-Zip\7z.exe") do (
         set "7zPath=%%~dpf"
         goto found
@@ -36,23 +36,41 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
         @REM timeout /t 2 >nul & cls
     )
 
-    @REM Request data from the user:
+    @REM *** Request data from the user: ***
 
     @REM Path to BackUpMaster.exe
+    for %%f in ("!config_path!\BackUpMaster.exe") do (
+    set "BackUpMaster_location=%%~dpf"
+    goto input_BackUpMaster_location
+    )
+
     :input_BackUpMaster_location
-    cls & echo Path to the BackUpMaster.exe^:
-    set "folderSelection="
-    for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('%culture%'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = 'Path to the BackUpMaster.exe:'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
-    if not exist "!folderSelection!\BackUpMaster.exe" (
-        goto input_BackUpMaster_location
+    if !BackUpMaster_location!=="" (
+        cls & echo Path to the BackUpMaster.exe^:
+        set "folderSelection="
+        for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('%culture%'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = 'Path to the BackUpMaster.exe:'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
+        if not exist "!folderSelection!\BackUpMaster.exe" (
+            goto input_BackUpMaster_location
+        ) else (
+            color 0A
+            set "BackUpMaster_location=!folderSelection!"
+            cls & echo Path to the BackUpMaster.exe: !BackUpMaster_location!
+            echo.
+            echo Everything is ready to start work
+            timeout /t 2 >nul
+        )
     ) else (
-        set "BackUpMaster_location=!folderSelection!"
-        cls & echo Path to the BackUpMaster.exe: !BackUpMaster_location!
+        color 0A
         timeout /t 2 >nul
+        cls & echo BackUpMaster.exe file was found at: !BackUpMaster_location!
+        echo.
+        echo Everything is ready to start work
+        timeout /t 4 >nul
     )
     
     @REM Path to the source files
     :input_source_path
+    color 07
     cls & echo Path to the files you want to back up^:
     set "folderSelection="
     for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('%culture%'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = 'Path to the files you want to back up:'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
@@ -98,7 +116,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     set "number_of_copies=!errorlevel!"
     timeout /t 1 >nul
 
-    REM Create the config_path if it doesn't exist
+    @REM *** Create the config_path if it does not exist and write the config.ini file ***
     if not exist "!config_path!" (
         mkdir "!config_path!"
     )
@@ -125,7 +143,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
         timeout /t 2 >nul
     )
     
-    @REM Add and remove BackUpMaster autorun
+    @REM *** Add and remove BackUpMaster autorun ***
     color 07
 
     if not exist "!config_path!\BackUpMaster.lnk" (
@@ -147,14 +165,13 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     endlocal
 
 ) else ( 
-    @REM Suggestion to overwrite the configuration if a file is available  
     setlocal enabledelayedexpansion
     set "config_path=%USERPROFILE%\documents\BackUpMaster"
 
     cls & color 07
     timeout /t 2 >nul
 
-    @REM Reading data from the configuration file
+    @REM *** Show logo and read data from the configuration file ***
     echo     ____             __      __  __         __  ___           __           
     echo    / __ ^)____ ______/ /__   / / / /___     /  ^|/  /___ ______/ /____  _____
     echo   / __  / __ `/ ___/ //_/  / / / / __ \   / /^|_/ / __ `/ ___/ __/ _ \/ ___/
@@ -182,6 +199,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     echo.
     echo.
 
+    @REM *** Suggestion to overwrite the configuration if the file is available ***
     choice /c YN /n /m "Create a new configuration? (Y - Yes, N - No): "
     if "!errorlevel!"=="1" (
         endlocal
