@@ -5,5 +5,5 @@
 *.EXE
 *.iss
 *.txt
-.gitignore
+*.gitignore
 Output
