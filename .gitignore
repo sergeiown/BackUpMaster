@@ -4,4 +4,6 @@
 *.zip
 *.EXE
 *.iss
+*.txt
+.gitignore
 Output
