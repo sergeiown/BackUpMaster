@@ -2,3 +2,6 @@
 *.ico
 *.lnk
 *.zip
+*.EXE
+*.iss
+Output
