@@ -1,6 +1,6 @@
-@echo off
-
 @REM MIT License https://github.com/sergeiown/BackUpMaster/blob/main/LICENSE
+
+@echo off
 
 @REM Use a common color and universal UTF-8 code
 color 07 & chcp 65001 >nul

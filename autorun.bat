@@ -1,3 +1,5 @@
+@REM MIT License https://github.com/sergeiown/BackUpMaster/blob/main/LICENSE
+
 @echo off
 
 setlocal enabledelayedexpansion
