@@ -34,7 +34,7 @@ findstr /c:"Everything is Ok" "%destination_path%\last_backup_log.txt"
 if %errorlevel% equ 0 (
     color 0A
     echo.
-    echo Successful backup & echo %date_time% - Successful backup "%destination_path%\%backup_filename%" >> "%destination_path%\%main_backup_log.txt"
+    echo %msg_27% & echo %date_time% - %msg_27% "%destination_path%\%backup_filename%" >> "%destination_path%\%main_backup_log.txt"
     echo.
     timeout /t 2 >nul
 
@@ -44,18 +44,18 @@ if %errorlevel% equ 0 (
         set /A "number_of_copies-=1"
         if !number_of_copies! LSS 0 (
             echo. & echo. >> %destination_path%\last_backup_log.txt
-            echo Delete according to the rules: %%i & echo Delete according to the rules: %%i >> %destination_path%\last_backup_log.txt
+            echo %msg_28% %%i & echo %msg_28% %%i >> %destination_path%\last_backup_log.txt
             DEL "%destination_path%\%%i"
             timeout /t 2 >nul
         ) else (
-            echo Store  according to the rules: %%i & echo Store  according to the rules: %%i >> %destination_path%\last_backup_log.txt
+            echo %msg_29% %%i & echo %msg_29% %%i >> %destination_path%\last_backup_log.txt
             timeout /t 1 >nul
         )
     )
     endlocal
 ) else (
     color 0C
-    echo Failed to create a backup. See %destination_path%\last_backup_log.txt for details.
+    echo %msg_30% %destination_path%\last_backup_log.txt
     echo %date_time% - Backup failed     %destination_path%\%backup_filename% >> "%destination_path%\main_backup_log.txt"
     echo.
     timeout /t 2 >nul

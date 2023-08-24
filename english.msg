@@ -1,5 +1,4 @@
 culture=en-US
-
 msg_01=7-Zip was not found.
 msg_02=Please download it from: https://www.7-zip.org/download.html
 msg_03=Path to the <BackUpMaster.exe>:
@@ -25,5 +24,9 @@ msg_22=Number of copies        -
 msg_23=BackUpMaster autorun    - On
 msg_24=BackUpMaster autorun    - Off
 msg_25=Create a new configuration? (Y - Yes, N - No):
-
 msg_26=Don't lose hope - the backup process is nearing completion...
+msg_27=Successful backup
+msg_28=Delete according to the settings:
+msg_29=Store  according to the settings:
+msg_30=Failed to create a backup. Details can be found in
+msg_31=Backup failed    
