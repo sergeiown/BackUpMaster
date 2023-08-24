@@ -1,1 +1,13 @@
-msg_1=Ghostscript is not installed.
+culture=en-US
+msg_01=7-Zip was not found.
+msg_02=Please download it from: https://www.7-zip.org/download.html
+msg_03=Path to the <BackUpMaster.exe>:
+msg_04=Everything is ready to start work.
+msg_05=<BackUpMaster.exe> file was found at:
+msg_06=Path to the files you want to back up:
+msg_07=Path to the backup results:
+msg_08=Enter the compression level (1-9, where 9 - the best, but the slowest):
+msg_09=Enter the file extensions to be excluded (separated by space, e.g.: mp3 docx) or leave the line blank:
+msg_10=Enter the number of backups to keep (1 - 5):
+msg_11=An error occurred while writing to the <config.ini> file
+msg_12=Configuration data is successfully written to the <config.ini> file.

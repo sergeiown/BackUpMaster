@@ -2,8 +2,7 @@
 
 @echo off
 
-@REM Use a common color and universal UTF-8 code
-color 07 & chcp 65001 >nul
+cls & color 07
 
 @REM Checking for the existence of the configuration file
 if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (

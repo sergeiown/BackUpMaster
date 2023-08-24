@@ -2,11 +2,14 @@
 
 @echo off
 
+@REM Automatic language selection
+call %~dp0language.bat
+
 if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     :rewrite
     setlocal enabledelayedexpansion
+    cls
     
-    set "culture=en-US"
     set "exitScript=0"
     set "7zPath="
     set "source_path="
@@ -24,9 +27,9 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
 
     :found
     if "!7zPath!"=="" (
-        echo 7-Zip was not found.
+        echo !msg_1!
         echo.
-        echo Please download it from: https://www.7-zip.org/download.html
+        echo !msg_2!
         echo.
         pause
         set "exitScript=1"
@@ -46,59 +49,59 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
 
     :input_BackUpMaster_location
     if !BackUpMaster_location!=="" (
-        cls & echo Path to the BackUpMaster.exe^:
+        cls & echo !msg_03!
         set "folderSelection="
-        for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('%culture%'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = 'Path to the BackUpMaster.exe:'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
+        for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('!culture!'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = '!msg_03!'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
         if not exist "!folderSelection!\BackUpMaster.exe" (
             goto input_BackUpMaster_location
         ) else (
             color 0A
             set "BackUpMaster_location=!folderSelection!"
-            cls & echo Path to the BackUpMaster.exe: !BackUpMaster_location!
+            cls & echo !msg_03! !BackUpMaster_location!
             echo.
-            echo Everything is ready to start work
+            echo !msg_04!
             timeout /t 2 >nul
         )
     ) else (
         color 0A
         timeout /t 2 >nul
-        cls & echo BackUpMaster.exe file was found at: !BackUpMaster_location!
+        cls & echo !msg_05! !BackUpMaster_location!
         echo.
-        echo Everything is ready to start work
+        echo !msg_04!
         timeout /t 4 >nul
     )
     
     @REM Path to the source files
     :input_source_path
     color 07
-    cls & echo Path to the files you want to back up^:
+    cls & echo !msg_06!
     set "folderSelection="
-    for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('%culture%'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = 'Path to the files you want to back up:'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
+    for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('!culture!'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = '!msg_06!'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
     set "source_path=!folderSelection!"
     if not exist "!source_path!" (
         goto input_source_path
     )
-    cls & echo Path to the files you want to back up: !source_path!
+    cls & echo !msg_06! !source_path!
     timeout /t 2 >nul
 
     @REM Path to the destination files
     :input_destination_path
-    cls & echo Path to the backup results^:
+    cls & echo !msg_07!
     set "folderSelection="
-    for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('%culture%'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = 'Path to the backup results:'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
+    for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('!culture!'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = '!msg_07!'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
     set "destination_path=!folderSelection!"
         if not exist "!destination_path!" (
         goto input_destination_path
     )
-    cls & echo Path to the backup results: !destination_path!
+    cls & echo !msg_07! !destination_path!
     timeout /t 2 >nul
 
     @REM Compression level
-    cls & choice /c 123456789 /n /m "Enter the compression level (1-9, where 9 - the best, but the slowest): "
+    cls & choice /c 123456789 /n /m "!msg_08! "
     set "compression_level=!errorlevel!"
     timeout /t 1 >nul
 
-    cls & echo Enter the file extensions to be excluded ^(separated by space, e.g.^: mp3 docx^) or leave the line blank:
+    cls & echo !msg_09!
     echo.
     set /p raw_extensions=
     set "excluded_extensions="
@@ -112,7 +115,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     timeout /t 1 >nul
 
     @REM Number of backups
-    cls & choice /c 12345 /n /m "Enter the number of backups to keep (1 - 5): "
+    cls & choice /c 12345 /n /m "!msg_10! "
     set "number_of_copies=!errorlevel!"
     timeout /t 1 >nul
 
@@ -133,13 +136,13 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
 
     if %errorlevel% neq 0 (
         color 0C
-        cls & echo An error occurred while writing to the config.ini file
+        cls & echo !msg_11!
         timeout /t 2 >nul
         set "exitScript=1"
         exit /b
     ) else (
         color 0A
-        cls & echo Configuration data is successfully written to the config.ini file
+        cls & echo !msg_12!
         timeout /t 2 >nul
     )
     
