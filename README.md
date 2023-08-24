@@ -53,7 +53,7 @@ It generates a backup file name based on the date and time.
 It compresses files into an archive using the 7-Zip program.
 The result of copy creation is checked, and if successful, old copies are cleaned up according to the specified limit.
 
-This modular approach ensures seamless interaction and organized execution of the various components of the BackUpMaster program.
+This modular solution ensures uninterrupted interaction and organized execution of various components of the BackUpMaster program.
 
 ## License
 
