@@ -1,4 +1,4 @@
-# [BackUpMaster](https://github.com/sergeiown/BackUpMaster/releases/tag/Further_steady_improvements)
+# [BackUpMaster](https://github.com/sergeiown/BackUpMaster/releases/tag/Final_version)
 
 BackUpMaster is more than just a data compression tool - it's a solution for automated and secure backup. It combines user-friendliness with powerful capabilities, helping safeguard critical information reliably.
 
@@ -19,7 +19,7 @@ BackUpMaster is more than just a data compression tool - it's a solution for aut
 
 ## Usage
 
-- The main method is to use executable files: `BackUpMaster.EXE` and `Config.EXE`, which are delivered as an installer named [BackUpMasterInstall.exe](https://github.com/sergeiown/BackUpMaster/releases)
+- The main method is to use executable files: `BackUpMaster.EXE` and `Config.EXE`, which are delivered as an installer named [BackUpMasterInstall.exe](https://github.com/sergeiown/BackUpMaster/releases/tag/Final_version)
 - Upon initial extraction, both executable files will be accessible, and in any case, the configuration tool for initial settings will be launched.
 - In the subsequent stages, BackUpMaster.EXE will handle the backup functions, while Config.EXE will be utilized for modifying all settings, including enabling and disabling automatic system startup for backup.
 - An alternative approach involves using batch files, although for convenience, it's simpler to utilize the executables, leaving the batch files for direct code manipulation when needed.
