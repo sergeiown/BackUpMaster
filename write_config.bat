@@ -150,14 +150,14 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     color 07
 
     if not exist "!config_path!\BackUpMaster.lnk" (
-        cls & choice /c YN /n /m "Do you want to turn on BackUpMaster autorun? (Y - Yes, N - No): "
+        cls & choice /c YN /n /m "!msg_13! "
         if "!errorlevel!"=="1" (
             call %~dp0autorun.bat
         ) else (
             exit /b
         )
     ) else (
-        cls & choice /c YN /n /m "Do you want to disable BackUpMaster autorun? (Y - Yes, N - No): "
+        cls & choice /c YN /n /m "!msg_14! "
         if "!errorlevel!"=="1" (
             call %~dp0autorun.bat
         ) else (
@@ -185,25 +185,27 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     timeout /t 1 >nul
     echo.
     echo.
-    echo Current configuration^:
+    echo !msg_15!
     echo.
     for /f "usebackq tokens=1,2 delims==" %%i in ("!config_path!\config.ini") do (
-        if "%%i"=="BackUpMaster_location" echo BackUpMaster path    - %%j
-        if "%%i"=="zpath" echo 7-zip path           - %%j
-        if "%%i"=="source_path" echo Source path          - %%j
-        if "%%i"=="destination_path" echo Destination path     - %%j
-        if "%%i"=="compression_level" echo Compression level    - %%j
-        if "%%i"=="excluded_extensions"  echo Excluded extensions  - %%j
-        if "%%i"=="number_of_copies" echo Number of copies     - %%j
+        if "%%i"=="BackUpMaster_location" echo !msg_16! %%j
+        if "%%i"=="zpath" echo !msg_17! %%j
+        if "%%i"=="source_path" echo !msg_18! %%j
+        if "%%i"=="destination_path" echo !msg_19! %%j
+        if "%%i"=="compression_level" echo !msg_20! %%j
+        if "%%i"=="excluded_extensions"  echo !msg_21! %%j
+        if "%%i"=="number_of_copies" echo !msg_22! %%j
     )
     if exist "!config_path!\BackUpMaster.lnk" (
-        echo BackUpMaster autorun - On
-    ) else (echo BackUpMaster autorun - Off)
+        echo !msg_23!
+    ) else (
+        echo !msg_24!
+    )
     echo.
     echo.
 
     @REM *** Suggestion to overwrite the configuration if the file is available ***
-    choice /c YN /n /m "Create a new configuration? (Y - Yes, N - No): "
+    choice /c YN /n /m "!msg_25! "
     if "!errorlevel!"=="1" (
         endlocal
         goto :rewrite
