@@ -30,7 +30,7 @@ if "%excluded_extensions%" == "" (
 )
 echo. >> "%destination_path%\last_backup_log.txt"
 
-findstr /c:"Everything is Ok" "%destination_path%\last_backup_log.txt"
+findstr /c:"Everything is Ok" "%destination_path%\last_backup_log.txt" >nul
 if %errorlevel% equ 0 (
     color 0A
     echo.
