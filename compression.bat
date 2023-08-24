@@ -2,6 +2,9 @@
 
 @echo off
 
+@REM Automatic language selection
+call %~dp0language.bat
+
 @REM Reading data from the configuration file
 set "config_path=%USERPROFILE%\documents\BackUpMaster\"
 for /f "usebackq tokens=1,2 delims==" %%i in ("%config_path%\config.ini") do (
@@ -18,7 +21,7 @@ set "date_time=%DATE:~-4%.%DATE:~3,2%.%DATE:~0,2%_%TIME:~0,2%.%TIME:~3,2%.%TIME:
 set "backup_filename=backup_%date_time%.7z"
 
 @REM Executing compression
-cls & echo The back up process is in progress... & echo.
+cls & echo %msg_26% & echo.
 
 if "%excluded_extensions%" == "" (
     "%zpath%7z.exe" a -t7z -mx=%compression_level% -r "%destination_path%\%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1

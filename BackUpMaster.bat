@@ -6,7 +6,7 @@ cls & color 07
 
 @REM Checking for the existence of the configuration file
 if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
-call %~dp0write_config.bat
+call %~dp0config.bat
 if "%exitScript%"=="1" (exit /b)
 )
 
