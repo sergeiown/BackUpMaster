@@ -60,7 +60,6 @@ if %errorlevel% equ 0 (
     for /F "Delims=" %%i in ('DIR /B/O:-N %destination_path%\backup_????.??.??_??.??.??.7z') do (
         set /A "number_of_copies-=1"
         if !number_of_copies! LSS 0 (
-            echo. & echo. >> %destination_path%\last_backup_log.txt
             echo %msg_28% %%i & echo %msg_28% %%i >> %destination_path%\last_backup_log.txt
             DEL "%destination_path%\%%i"
             timeout /t 2 >nul
