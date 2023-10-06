@@ -4,7 +4,7 @@ BackUpMaster is more than just a data compression tool - it's a solution for aut
 
 ## Features and Capabilities
 
-- **Executable installer:** The program is supplied with an installation file [executable (.exe)] (<https://github.com/sergeiown/BackUpMaster/releases>), which simplifies the installation and launch of the program processes.  An uninstaller is also available, which allows you to completely remove all traces of the program from the system.
+- **Executable installer:** The program is supplied with an installation file [executable (.exe)](<https://github.com/sergeiown/BackUpMaster/releases>), which simplifies the installation and launch of the program processes.  An uninstaller is also available, which allows you to completely remove all traces of the program from the system.
 - **Multilingual support:** Automatically selects from three available languages: EN, UK, RU.
 - **Configuration Flexibility:** Convenient configuration via `config.ini` with a separate configurator for super convenient changes allows you to customize paths, compression level, excluded file extensions, number of saved copies and more.
 - **Automatic Startup:** The option for BackUpMaster to launch during system startup ensures continuous backup operations.
