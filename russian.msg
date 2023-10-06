@@ -1,7 +1,7 @@
 culture=ru-RU
 msg_01=7-Zip не найден.
 msg_02=Пожалуйста, загрузите его с сайта: https://www.7-zip.org/download.html.
-msg_03=Путь к файлу <BackUpMaster.bat>:
+msg_03=Путь к расположению файла <BackUpMaster.bat>:
 msg_04=Все готово для начала работы.
 msg_05=Файл <BackUpMaster.bat> найден по адресу:
 msg_06=Путь к файлам, резервное копирование которых необходимо выполнить:

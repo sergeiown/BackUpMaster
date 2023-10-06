@@ -1,7 +1,7 @@
 culture=en-US
 msg_01=7-Zip was not found.
 msg_02=Please download it from: https://www.7-zip.org/download.html
-msg_03=Path to the <BackUpMaster.bat>:
+msg_03=Path to the location <BackUpMaster.bat>:
 msg_04=Everything is ready to start work.
 msg_05=<BackUpMaster.bat> file was found at:
 msg_06=Path to the files you want to back up:
