@@ -4,26 +4,26 @@ BackUpMaster is more than just a data compression tool - it's a solution for aut
 
 ## Features and Capabilities
 
-- **Executable Files for Ease:** The program comes with [executable (.exe)](https://github.com/sergeiown/BackUpMaster/releases) installation file that simplifies the installation and launch of the program processes.
-- **Multilingual support** Automatically selects from three available languages: EN, UK, RU.
+- **Executable installer:** The program is supplied with an installation file [executable (.exe)] (<https://github.com/sergeiown/BackUpMaster/releases>), which simplifies the installation and launch of the program processes.  An uninstaller is also available, which allows you to completely remove all traces of the program from the system.
+- **Multilingual support:** Automatically selects from three available languages: EN, UK, RU.
 - **Configuration Flexibility:** Convenient configuration via `config.ini` with a separate configurator for super convenient changes allows you to customize paths, compression level, excluded file extensions, number of saved copies and more.
 - **Automatic Startup:** The option for BackUpMaster to launch during system startup ensures continuous backup operations.
 - **Copy Management:** Automatic management of backup copies, allowing to retain only the necessary number of copies and remove outdated ones.
 - **Exclusion of File Extensions:** The ability to exclude specific file extensions from the compression process provides greater control over the content of backup copies.
 - **Logging and Notifications:** Generating log files for each copy process allows you to track the results and receive notifications of success or failure. Two types of log files are available: general and last operation logs, which allows you to fine-tune all aspects of the backup process.
-- **Graphical Interface:** Through the command-line interface and graphical user interface, you can conveniently interact with the program.
+- **Intuitive interface:** Through the command-line interface and graphical user interface, you can conveniently interact with the program.
 - **Individual Path Settings:** The capability to specify paths to backup and storage folders ensures tool flexibility.
-- **Configuration Editor:** A separate configuration editor file is provided, making it even more convenient to manage and fine-tune your backup settings.
+- **Configuration Editor:** A configuration editor is provided, making it even easier to manage and fine-tune backup settings.
 
 ![image](https://github.com/sergeiown/BackUpMaster/assets/112722061/62897175-82aa-4c88-a386-1caf7bade3ab)
 
 ## Usage
 
-- The main method is to use installation file: [executable (.exe)](https://github.com/sergeiown/BackUpMaster/releases)
-- An alternative approach involves using batch files.
-- The usage is intuitive and requires no additional explanations.
+- The main method is to use the installation file: [executable file (.exe)](https://github.com/sergeiown/BackUpMaster/releases) and then using shortcuts in the start menu.
+- An alternative approach involves the direct use of batch files.
+- The setup is intuitive and requires no further explanation.
 
-BackUpMaster offers versatile methods of usage, combining executable files with batch files for seamless and efficient control of backup settings.
+BackUpMaster offers a variety of usage methods for convenient and efficient management of backup settings.
 
 ## Module Logic and Interaction Overview
 
