@@ -74,7 +74,7 @@ if %errorlevel% equ 0 (
     color 0C
     cls & echo.
     echo %msg_30% %destination_path%\last_backup_log.txt
-    echo %date_time% - Backup failed     %destination_path%\%backup_filename% >> "%destination_path%\main_backup_log.txt"
+    echo %date_time% - %msg_31% "%destination_path%\%backup_filename%" >> "%destination_path%\main_backup_log.txt"
     echo.
     timeout /t 2 >nul
     pause
