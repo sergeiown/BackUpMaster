@@ -3,17 +3,17 @@
 for /f %%A in ('wmic os get locale ^| find "0"') do set "LOCALE=%%A"
 if "%LOCALE%"=="0422" (
     chcp 65001 >nul
-    set "file_name=ukrainian.msg"
+    set "file_name=.\ukrainian.msg"
     echo.
     cls
 ) else if "%LOCALE%"=="0419" (
     chcp 65001 >nul
-    set "file_name=russian.msg"
+    set "file_name=.\russian.msg"
     echo.
     cls
 ) else (
     chcp 65001 >nul
-    set "file_name=english.msg"
+    set "file_name=.\english.msg"
     echo.
     cls
 )

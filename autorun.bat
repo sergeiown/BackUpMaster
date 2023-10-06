@@ -21,8 +21,8 @@ if not exist "%config_path%\BackUpMaster.lnk" (
     )
     
     @REM Create a shortcut
-    powershell.exe -Command "$WshShell = New-Object -ComObject WScript.Shell; $Shortcut = $WshShell.CreateShortcut('%startupFolder%\BackUpMaster.lnk'); $Shortcut.TargetPath = '!BackUpMaster_location!\BackUpMaster.bat'; $Shortcut.IconLocation = '!BackUpMaster_location!\BackUpMaster.ico,0'; $Shortcut.Save()"
-    powershell.exe -Command "$WshShell = New-Object -ComObject WScript.Shell; $Shortcut = $WshShell.CreateShortcut('%config_path%\BackUpMaster.lnk'); $Shortcut.TargetPath = '!BackUpMaster_location!\BackUpMaster.bat'; $Shortcut.IconLocation = '!BackUpMaster_location!\\BackUpMaster.ico,0'; $Shortcut.Save()"
+    powershell.exe -Command "$WshShell = New-Object -ComObject WScript.Shell; $Shortcut = $WshShell.CreateShortcut('%startupFolder%\BackUpMaster.lnk'); $Shortcut.TargetPath = '!BackUpMaster_location!\BackUpMaster.bat'; $Shortcut.WorkingDirectory = '!BackUpMaster_location!'; $Shortcut.IconLocation = '!BackUpMaster_location!\BackUpMaster.ico,0'; $Shortcut.Save()"
+    powershell.exe -Command "$WshShell = New-Object -ComObject WScript.Shell; $Shortcut = $WshShell.CreateShortcut('%config_path%\BackUpMaster.lnk'); $Shortcut.TargetPath = '!BackUpMaster_location!\BackUpMaster.bat'; $Shortcut.WorkingDirectory = '!BackUpMaster_location!'; $Shortcut.IconLocation = '!BackUpMaster_location!\\BackUpMaster.ico,0'; $Shortcut.Save()"
     timeout /t 2 >nul
 ) else (
     @REM Delete existing shortcut
