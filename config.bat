@@ -130,6 +130,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     )
 
     (
+        echo system_language=!culture!
         echo BackUpMaster_location=!BackUpMaster_location!
         echo zpath=!7zPath:~0,-1!
         echo source_path=!source_path!
@@ -193,6 +194,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     echo !msg_15!
     echo.
     for /f "usebackq tokens=1,2 delims==" %%i in ("!config_path!\config.ini") do (
+        if "%%i"=="system_language" echo !msg_32! %%j
         if "%%i"=="BackUpMaster_location" echo !msg_16! %%j
         if "%%i"=="zpath" echo !msg_17! %%j
         if "%%i"=="source_path" echo !msg_18! %%j
