@@ -15,7 +15,7 @@ BackUpMaster is more than just a data compression tool - it's a solution for aut
 - **Individual Path Settings:** The capability to specify paths to backup and storage folders ensures tool flexibility.
 - **Configuration Editor:** A separate configuration editor file is provided, making it even more convenient to manage and fine-tune your backup settings.
 
-![image](https://github.com/sergeiown/BackUpMaster/assets/112722061/33085149-33b7-4ef4-8576-6d1d7f564722)
+![image](https://github.com/sergeiown/BackUpMaster/assets/112722061/5b56f7e6-735e-458a-be49-f6970c5ef101)
 
 ## Usage
 
