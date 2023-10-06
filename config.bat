@@ -43,8 +43,8 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
 
     @REM Path to BackUpMaster
     
-    if exist "!folderSelection!\BackUpMaster.bat" (
-        set "BackUpMaster_location=!folderSelection!"
+    if exist "!config_path!\BackUpMaster.bat" (
+        set "BackUpMaster_location=!config_path!"
         goto input_BackUpMaster_location
     ) else (
         set "BackUpMaster_location="
