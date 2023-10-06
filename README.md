@@ -4,7 +4,7 @@ BackUpMaster is more than just a data compression tool - it's a solution for aut
 
 ## Features and Capabilities
 
-- **Executable Files for Ease:** The program comes with [executable (.exe)](https://github.com/sergeiown/BackUpMaster/releases) files that simplify use by allowing you to easily run the program and all its components.
+- **Executable Files for Ease:** The program comes with [executable (.exe)](https://github.com/sergeiown/BackUpMaster/releases) an installation file that simplifies the installation and launch of the program processes.
 - **Multilingual support** Automatically selects from three available languages: EN, UK, RU.
 - **Configuration Flexibility:** Convenient configuration via `config.ini` with a separate configurator for super convenient changes allows you to customize paths, compression level, excluded file extensions, number of saved copies and more.
 - **Automatic Startup:** The option for BackUpMaster to launch during system startup ensures continuous backup operations.
@@ -19,10 +19,8 @@ BackUpMaster is more than just a data compression tool - it's a solution for aut
 
 ## Usage
 
-- The main method is to use executable files: `BackUpMaster.EXE` and `Config.EXE`, which are delivered as an installer named [BackUpMasterInstall.exe](https://github.com/sergeiown/BackUpMaster/releases/tag/Final_version)
-- Upon initial extraction, both executable files will be accessible, and in any case, the configuration tool for initial settings will be launched.
-- In the subsequent stages, BackUpMaster.EXE will handle the backup functions, while Config.EXE will be utilized for modifying all settings, including enabling and disabling automatic system startup for backup.
-- An alternative approach involves using batch files, although for convenience, it's simpler to utilize the executables, leaving the batch files for direct code manipulation when needed.
+- The main method is to use installation file: [executable (.exe)](https://github.com/sergeiown/BackUpMaster/releases)
+- An alternative approach involves using batch files.
 - The usage is intuitive and requires no additional explanations.
 
 BackUpMaster offers versatile methods of usage, combining executable files with batch files for seamless and efficient control of backup settings.
