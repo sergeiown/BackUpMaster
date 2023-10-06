@@ -22,6 +22,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     REM *** Search for 7-Zip in Program Files and Program Files (x86) ***
     for %%f in ("%ProgramFiles%\7-Zip\7z.exe" "%ProgramFiles(x86)%\7-Zip\7z.exe") do (
         set "7zPath=%%~dpf"
+        set "7zPath=%7zPath:~0,-1%"
         goto found
     )
 
