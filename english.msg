@@ -1,9 +1,9 @@
 culture=en-US
 msg_01=7-Zip was not found.
 msg_02=Please download it from: https://www.7-zip.org/download.html
-msg_03=Path to the <BackUpMaster.exe>:
+msg_03=Path to the <BackUpMaster.bat>:
 msg_04=Everything is ready to start work.
-msg_05=<BackUpMaster.exe> file was found at:
+msg_05=<BackUpMaster.bat> file was found at:
 msg_06=Path to the files you want to back up:
 msg_07=Path to the backup results:
 msg_08=Enter the compression level (1-9, where 9 - the best, but the slowest):

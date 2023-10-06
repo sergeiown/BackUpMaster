@@ -41,8 +41,8 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
 
     @REM *** Request data from the user: ***
 
-    @REM Path to BackUpMaster.exe
-    for %%f in ("!config_path!\BackUpMaster.exe") do (
+    @REM Path to BackUpMaster
+    for %%f in ("!config_path!\BackUpMaster.bat") do (
     set "BackUpMaster_location=%%~dpf"
     goto input_BackUpMaster_location
     )
@@ -52,7 +52,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
         cls & echo !msg_03!
         set "folderSelection="
         for /f "delims=" %%d in ('powershell -Command "$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture('!culture!'); Add-Type -AssemblyName System.Windows.Forms; $f = New-Object Windows.Forms.FolderBrowserDialog; $f.Description = '!msg_03!'; $f.Language = $culture; $f.ShowDialog(); $f.SelectedPath"') do set "folderSelection=%%d"
-        if not exist "!folderSelection!\BackUpMaster.exe" (
+        if not exist "!folderSelection!\BackUpMaster.bat" (
             goto input_BackUpMaster_location
         ) else (
             color 0A
