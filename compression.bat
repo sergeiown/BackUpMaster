@@ -25,9 +25,9 @@ cls & echo.
 echo %msg_26% & echo.
 
 if "%excluded_extensions%" == "" (
-    start "" /b "%zpath%7z.exe" a -t7z -mx=%compression_level% -r "%destination_path%\%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
+    start "" /b "%zpath%\7z.exe" a -t7z -mx=%compression_level% -r "%destination_path%\%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
 ) else (
-    start "" /b "%zpath%7z.exe" a -t7z -mx=%compression_level% -r -x!"%excluded_extensions%" "%destination_path%\%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
+    start "" /b "%zpath%\7z.exe" a -t7z -mx=%compression_level% -r -x!"%excluded_extensions%" "%destination_path%\%backup_filename%" "%source_path%\*.*" > "%destination_path%\last_backup_log.txt" 2>&1
 )
 
 @REM Displaying the progress bar

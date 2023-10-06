@@ -22,7 +22,6 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
     REM *** Search for 7-Zip in Program Files and Program Files (x86) ***
     for %%f in ("%ProgramFiles%\7-Zip\7z.exe" "%ProgramFiles(x86)%\7-Zip\7z.exe") do (
         set "7zPath=%%~dpf"
-        set "7zPath=%7zPath:~0,-1%"
         goto found
     )
 
@@ -132,7 +131,7 @@ if not exist %USERPROFILE%\documents\BackUpMaster\config.ini (
 
     (
         echo BackUpMaster_location=!BackUpMaster_location!
-        echo zpath=!7zPath!
+        echo zpath=!7zPath:~0,-1!
         echo source_path=!source_path!
         echo destination_path=!destination_path!
         echo compression_level=!compression_level!
