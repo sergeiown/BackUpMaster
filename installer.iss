@@ -15,10 +15,10 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={userdocs}\BackUpMaster
 DefaultGroupName=BackUpMaster
 AllowNoIcons=no
-LicenseFile=D:\Projects\BackUpMaster\LICENSE
+LicenseFile=LICENSE
 InfoAfterFile=infoafter.txt
 OutputBaseFilename=BackUpMasterInstall
-SetupIconFile=D:\Projects\BackUpMaster\BackUpMaster.ico
+SetupIconFile=BackUpMaster.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=classic
@@ -33,15 +33,15 @@ Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "D:\Projects\BackUpMaster\autorun.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\BackUpMaster\backupmaster.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\BackUpMaster\backupmaster.ico"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\BackUpMaster\compression.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\BackUpMaster\config.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\BackUpMaster\language.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\BackUpMaster\english.msg"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\BackUpMaster\russian.msg"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projects\BackUpMaster\ukrainian.msg"; DestDir: "{app}"; Flags: ignoreversion
+Source: "autorun.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "backupmaster.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "backupmaster.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "compression.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "config.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "language.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "english.msg"; DestDir: "{app}"; Flags: ignoreversion
+Source: "russian.msg"; DestDir: "{app}"; Flags: ignoreversion
+Source: "ukrainian.msg"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\BackUpMaster.bat"; IconFilename: "{app}\BackUpMaster.ico"
